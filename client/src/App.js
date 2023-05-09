@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Article from "./Pages/Article";
 import ArticlesList from "./Pages/ArticlesList";
+import NavBar from "./Components/NavBar";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       </div> */}
 
       <Router>
+        <NavBar />
         <div className="max-w-screen-md mx-auto pt-20">
           <Routes>
             {/* <div className="max-w-screen-md mx-auto pt-20"> */}
