@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ArticleContent from "../Pages/ArticleContent";
+// import ArticleContent from "../Pages/ArticleContent";
 
 const Articles = ({ articles }) => {
   return (
     <>
-      {ArticleContent.map((data, index) => {
+      {/* {ArticleContent.map((data, index) => ( */}
+      {articles.map((data, index) => (
         <div key={index} className="p-4 md:w-1/2">
           <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
             <Link to={`/article/${data.name}`}>
@@ -14,9 +15,9 @@ const Articles = ({ articles }) => {
                 src={data.thumbnail}
                 alt="Not found"
               />
-              <h1>{data.title}</h1>
+              {/* <h1>{data.title}</h1> */}
             </Link>
-            {console.log("ArticleContent =>", data.content)}
+            {/* {console.log("ArticleContent =>", data.content)} */}
 
             <div className="p-6">
               <Link key={index} to={`/article/${data.name}`}>
@@ -37,10 +38,14 @@ const Articles = ({ articles }) => {
               </div>
             </div>
           </div>
-        </div>;
-      })}
+        </div>
+      ))}
     </>
   );
 };
 
 export default Articles;
+
+/*
+Same error {} use ()
+*/

@@ -10,7 +10,7 @@ const Article = () => {
   if (!article) {
     return (
       <h1>
-        Sorry, but this article does not exist & <NotFound />;
+        Sorry, but this article does not exist & <NotFound />
       </h1>
     );
   }
@@ -19,33 +19,16 @@ const Article = () => {
   );
   return (
     <>
-      {/* <div>Article</div> */}
-
-      {/* <h1 className="sm:text-4xl text-2xl font-bold my-6 text-grey-900">
-        SINGLE ARTICLE!!!
-        <hr />
-        This is the {name} ARTICLE!!!
-        <hr />
-      </h1> */}
-
       <div>
         <h1 className="sm:text-4xl text-2xl font-bold my-6 text-grey-900">
           {article.title}
         </h1>
-        <p className="mx-auto leading-relaxed text-base mb-4">
-          {article.content}
-        </p>
 
-        {/* {ArticleContent.map((data, index) => {
-          <p className="mx-auto leading-relaxed text-base mb-4" key={index}>
-            {data.content}
-          </p>;
-        })} */}
-        {/* {article.content.map((data, index) => {
+        {article.content.map((data, index) => (
           <p className="mx-auto leading-relaxed text-base mb-4" key={index}>
             {data}
-          </p>;
-        })} */}
+          </p>
+        ))}
 
         <h1 className="sm:text-2xl text-xl font-bold my-4 text-grey-900">
           {" "}
@@ -60,3 +43,38 @@ const Article = () => {
 };
 
 export default Article;
+
+/*
+Starting - 
+<div>Article</div>
+<h1 className="sm:text-4xl text-2xl font-bold my-6 text-grey-900"> SINGLE ARTICLE!!!
+  <hr />
+  This is the {name} ARTICLE!!!
+  <hr />
+</h1> 
+*/
+
+/* 
+<p className="mx-auto leading-relaxed text-base mb-4">
+  {article.content}
+</p> 
+
+{ArticleContent.map((data, index) => {
+<p className="mx-auto leading-relaxed text-base mb-4" key={index}>
+  {data}
+</p>;
+})} 
+*/
+
+/*
+Error -
+{article.content.map((data, index) => {
+  <p className="mx-auto leading-relaxed text-base mb-4" key={index}>
+    {data}
+  </p>
+})}
+
+Soln - article.map(() => ())
+rather than 
+article.map(() => {})
+*/

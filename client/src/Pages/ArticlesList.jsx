@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import ArticleContent from "./ArticleContent";
 
 import Articles from "../Components/Articles";
@@ -13,7 +12,7 @@ const ArticlesList = () => {
           ARTICLES-LIST!!!
         </h1>
         <div className="container py-4 mx-auto">
-          <div className="flex flex-wrap m-4">
+          <div className="flex flex-wrap -m-4">
             <Articles articles={ArticleContent} />
           </div>
         </div>
