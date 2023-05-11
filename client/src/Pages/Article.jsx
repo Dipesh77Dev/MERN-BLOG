@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ArticleContent from "./ArticleContent";
 import Articles from "../Components/Articles";
@@ -7,6 +7,19 @@ import NotFound from "./NotFound";
 const Article = () => {
   const { name } = useParams();
   const article = ArticleContent.find((article) => article.name === name);
+  const [articleInfo, setArticleInfo] = useState({ comments: [] });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await fetch(`/api/articles/${name}`);
+      const body = await result.json();
+      console.log(body);
+      setArticleInfo(body);
+    };
+    fetchData();
+    // console.log("Component Mounted");
+  }, [name]); // once the url parameter [name] change the useEffect will run.
+
   if (!article) {
     return (
       <h1>

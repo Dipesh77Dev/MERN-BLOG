@@ -6,20 +6,6 @@ const PORT = process.env.PORT || 8080;
 
 const { MongoClient } = require("mongodb");
 
-/* No need for dummy data bcoz we are using mongodb =>
-const articlesInfo = {
-  react: {
-    comments: [],
-  },
-  react1: {
-    comments: [],
-  },
-  node: {
-    comments: [],
-  },
-};
-*/
-
 // Middleware -
 // We can use bodyparser but now we have built-in middleware. Functn of express. It parses the incoming JSON Payload.
 app.use(express.json({ extended: false }));
@@ -70,14 +56,18 @@ app.post("/api/articles/:name/add-comments", (req, res) => {
     const articleInfo = await db
       .collection("articles")
       .findOne({ name: articleName });
-      await db.collection('articles').updateOne({name: articleName}, {
-        $set:{
-          comments: articleInfo.comments.concat({username,text}),
+    await db.collection("articles").updateOne(
+      { name: articleName },
+      {
+        $set: {
+          comments: articleInfo.comments.concat({ username, text }),
         },
       }
-      );
-      const updateArticleInfo = await db.collection('articles').findOne({name: articleName});
-      res.status(200).json(updateArticleInfo);
+    );
+    const updateArticleInfo = await db
+      .collection("articles")
+      .findOne({ name: articleName });
+    res.status(200).json(updateArticleInfo);
   }, res);
 });
 
@@ -139,4 +129,27 @@ After restarting server -
         }
     ]
 }
+*/
+
+/* 
+Before using middleware -
+No need for dummy data bcoz we are using mongodb =>
+const articlesInfo = {
+  react: {
+    comments: [],
+  },
+  react1: {
+    comments: [],
+  },
+  node: {
+    comments: [],
+  },
+};
+*/
+
+/*
+fetch('/api/articles/...', {
+  method: 'POST', // POST/GET
+  body: 
+});
 */
