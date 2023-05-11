@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ArticleContent from "./ArticleContent";
+
 import Articles from "../Components/Articles";
+import CommentsList from "../Components/CommentsList";
+import AddCommentForm from "../Components/AddCommentForm";
 import NotFound from "./NotFound";
 
 const Article = () => {
@@ -42,6 +45,10 @@ const Article = () => {
             {data}
           </p>
         ))}
+
+        <CommentsList comments={articleInfo.comments} />
+
+        <AddCommentForm articleName={name} setArticleInfo={setArticleInfo}/>
 
         <h1 className="sm:text-2xl text-xl font-bold my-4 text-grey-900">
           {" "}
